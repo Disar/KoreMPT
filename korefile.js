@@ -2,8 +2,6 @@ let project = new Project('KoreMPT', __dirname);
 
 project.addFile('Sources/**');
 project.addIncludeDir('Sources');
-project.setDebugDir('Deployment');
-
 //-------------------------------------------
 // LibOpenMPT Defines
 project.addDefine('LIBOPENMPT_BUILD');
@@ -148,19 +146,18 @@ project.addIncludeDir('LibOpenMPT/common');
 project.addIncludeDir('LibOpenMPT/build/svn_version');
 
 if(platform === Platform.Windows){
-	//project.addDefine('LIBOPENMPT_BUILD_SMALL');
-	//project.addDefine('MPT_OS_WINDOWS');
+	project.addDefine('ENABLE_ASM');	
 	project.addLib('Rpcrt4');
 }
 
+
 if(platform === Platform.Android){
 	project.addDefine('NO_LIBOPENMPT_C');
+	console.log('Android native: setting cpp11 to true for KoreMPT');
+	project.addDefine('ENABLE_ASM');	
 	project.cpp11 = true;
 }
 
-//--------------------------------------------
 
-Project.createProject('Kore', __dirname).then((kore) => {
-	project.addSubProject(kore);
-	resolve(project);
-});	
+//--------------------------------------------
+resolve(project);
