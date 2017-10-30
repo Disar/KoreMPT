@@ -35,7 +35,7 @@ namespace KMPT {
 		if (MPTStreamer::audioOneCallback != nullptr)
 			MPTStreamer::audioOneCallback(sampleSize);
 
-		if (mod == nullptr || paused) { return; }
+		if (module == nullptr || paused) { return; }
 		Audio2::buffer.writeLocation = pos;		// rewind to mix with audio1
 
 		//mutex.Lock();
@@ -87,7 +87,7 @@ namespace KMPT {
 
 
 	void MPTStreamer::loadFile(Kore::FileReader &file) {
-		if (mod != nullptr) delete module;
+		if (module != nullptr) delete module;
 		module = new openmpt::module(file.readAll(), file.size());
 		setLoop(-1);
 
@@ -97,7 +97,7 @@ namespace KMPT {
 	{
 		//mutex.Lock();
 
-		if (mod == nullptr) return;
+		if (module == nullptr) return;
 		module->select_subsong(songIndex);
 		//mutex.Unlock();
 	}
