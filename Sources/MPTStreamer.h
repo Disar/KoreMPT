@@ -2,8 +2,10 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
-#include <Kore\IO\FileReader.h>
+#ifdef KHA
 #include <kha\internal\BytesBlob.h>
+#endif
+#include <Kore\IO\FileReader.h>
 #include <Kore\Threads\Thread.h>
 
 
@@ -16,9 +18,9 @@ namespace KMPT {
 	public:
 		MPTStreamer();
 		~MPTStreamer();
-//#ifdef KhaMPT
+#ifdef KHA
 		void loadFile(kha::internal::BytesBlob &file);
-//#endif // kha
+#endif // kha
 
 		void loadFile(std::ifstream &file);
 		void loadFile(Kore::FileReader &file);

@@ -6,7 +6,12 @@
 #include "Kore\Audio1\Audio.h"
 #include "libopenmpt/libopenmpt.hpp"
 #include <Kore/Math/Core.h>
+
+#ifdef KHA
 #include <haxe\io\Bytes.h>
+#endif
+
+
 #include <Kore/Threads/Mutex.h>
 #include <Kore\Log.h>
 #include <Kore\System.h>
@@ -67,7 +72,7 @@ namespace KMPT {
 		//Audio2::audioCallback = Audio1::mix;
 		delete module;
 	}
-//#ifdef KhaMPT
+#ifdef KHA
 	void MPTStreamer::loadFile(kha::internal::BytesBlob &file)
 	{
 		if (module != nullptr) delete module;
@@ -75,7 +80,7 @@ namespace KMPT {
 		module = new openmpt::module(file->bytes->b->Pointer(), size);
 		setLoop(-1);
 	}
-//#endif
+#endif
 
 	void MPTStreamer::loadFile(std::ifstream &file)
 	{
