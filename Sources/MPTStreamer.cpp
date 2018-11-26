@@ -8,7 +8,7 @@
 #include <Kore/Math/Core.h>
 
 #ifdef KHA
-#include <haxe\io\Bytes.h>
+#include <hxinc\haxe\io\Bytes.h>
 #endif
 
 

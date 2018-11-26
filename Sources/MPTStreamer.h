@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #ifdef KHA
-#include <kha\internal\BytesBlob.h>
+#include <hxinc\kha\internal\BytesBlob.h>
 #endif
 #include <Kore\IO\FileReader.h>
 #include <Kore\Threads\Thread.h>
