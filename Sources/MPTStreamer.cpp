@@ -9,6 +9,7 @@
 
 #ifdef KHA
 #include <hxinc\haxe\io\Bytes.h>
+#include <hxinc/kha/audio2/Audio.h>
 #endif
 
 
@@ -44,7 +45,7 @@ namespace KMPT {
 		Audio2::buffer.writeLocation = pos;		// rewind to mix with audio1
 
 		//mutex.Lock();
-		std::size_t count = module->read_interleaved_stereo(44100, sampleSize / 2, output);
+		std::size_t count = module->read_interleaved_stereo(48000, sampleSize / 2, output);
 		//mutex.Unlock();
 
 		if (count == 0) return;
